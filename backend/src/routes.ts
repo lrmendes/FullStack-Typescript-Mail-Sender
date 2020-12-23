@@ -7,7 +7,7 @@ routes.get('/', (req,res) => {
     return res.send('Hello 2');
 });
 
-routes.get('/users', UserController.index);
-routes.get('/users/create', UserController.create);
+routes.get('/', UserController.index);
+routes.post('/', UserController.sendMail);
 
 export default routes;
