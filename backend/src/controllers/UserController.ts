@@ -10,13 +10,20 @@ export default {
         return res.json(users);
     },
 
-    async create(req:Request, res: Response) {
-        const emailService = new EmailService();
-        emailService.sendMail({
-            to: {name: 'Lucas', email: 'joao'},
-            message: {subject: 'Welcome to TS', body: 'Hello, this is the body of e-mail message.'}
+    async sendMail(req:Request, res: Response) {
+        const emailService = new EmailService({
+            from: 'lrmen14@gmail.com',
+            to: 'lrmen14@gmail.com',
+            message: {
+                subject: 'Welcome to TS',
+                body: 'Hello, this is the body of e-mail message.'
+            }
         });
-        
-        return res.send();
-    }
+        let result = await emailService.sendMail();
+        if (result.code == 200) {
+            return res.status(200).send({data: result.data});
+        } else {
+            return res.status(result.code).send({data: result.data});
+        }
+    },
 }
