@@ -1,13 +1,11 @@
 import { Request, Response } from 'express';
 import EmailService from '../services/EmailService';
 
-const users = [
-    { name: 'Lucas', email: 'lrmen14@gmail.com'}
-];
+const userMail = "lrmen14@gmail.com"
 
 export default {
-    async index(req: Request, res: Response) {
-        return res.json(users);
+    async userMail(req: Request, res: Response) {
+        return res.status(200).send(userMail);
     },
 
     async sendMail(req:Request, res: Response) {
