@@ -2,13 +2,13 @@ import { SendOutlined, MailOutlined, UserOutlined  } from '@ant-design/icons';
 import { Form, Input, Button } from 'antd';
 
 interface Props {
-
+  fromMail: string
 }
 
 const { TextArea } = Input;
 
 
-const MailForm: React.FC<Props> = () => {
+const MailForm: React.FC<Props> = ({fromMail}) => {
 
     const layout = {
         labelCol: { span: 10 },
@@ -31,7 +31,7 @@ const MailForm: React.FC<Props> = () => {
     <Form
       {...layout}
       name="basic"
-      initialValues={{ remember: true }}
+      initialValues={{ from: fromMail }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >
@@ -40,7 +40,7 @@ const MailForm: React.FC<Props> = () => {
         name="from"
         rules={[{ required: true, message: "Please input the sender's mail!" }]}
       >
-        <Input prefix={<UserOutlined />} />
+        <Input prefix={<UserOutlined />} readOnly={true} />
       </Form.Item>
 
       <Form.Item
