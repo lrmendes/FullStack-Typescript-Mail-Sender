@@ -8,6 +8,6 @@ routes.get('/', (req,res) => {
 });
 
 routes.get('/userMail', UserController.userMail);
-routes.post('/', UserController.sendMail);
+routes.post('/sendMail', UserController.sendMail);
 
 export default routes;

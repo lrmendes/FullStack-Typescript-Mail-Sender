@@ -3,7 +3,7 @@ import config from '../configs/configs';
 
 interface IMailMessage {
     subject: string;
-    body: string;
+    html: string;
     attachment ?: Array<string>;
 }
 
@@ -29,7 +29,7 @@ class EmailService implements IEmailService {
             from: this.mail.from,
             to: this.mail.to,
             subject: this.mail.message.subject,
-            html: this.mail.message.body
+            html: this.mail.message.html
         };
         
         const transporter = nodemailer.createTransport({
