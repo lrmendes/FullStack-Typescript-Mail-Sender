@@ -31,23 +31,27 @@ class EmailService implements IEmailService {
             subject: this.mail.message.subject,
             html: this.mail.message.html
         };
-        
-        const transporter = nodemailer.createTransport({
-            host: config.host,
-            port: config.port,
-            secure: false,
-            auth: {
-                user: config.user,
-                pass: config.password
-            },
-            tls: { rejectUnauthorized: false }
-        });
 
-        return await transporter.sendMail(mailOptions).then(response => {
-            return { data: response?.messageId || "success", code: 200};
-        }).catch(error => {
-            return { data: error?.message || "error", code: 400}
-        });
+        try {
+            const transporter = nodemailer.createTransport({
+                host: config.host,
+                port: config.port,
+                secure: false,
+                auth: {
+                    user: config.auth.user,
+                    pass: config.auth.pass
+                },
+                tls: { rejectUnauthorized: false }
+            });
+
+            return await transporter.sendMail(mailOptions).then(response => {
+                return { data: response?.messageId || "success", code: 200};
+            }).catch(error => {
+                return { data: error?.message || "error", code: 400}
+            });
+        } catch(err) {
+            return { data: err || "error", code: 400}
+        };
         
     }
 }
