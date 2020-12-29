@@ -33,7 +33,7 @@ The back-end interface uses nodemailer and to send emails with nodeJS.
 
 ### Interfaces
 
-#### Sucess Mail
+### Successful email sending
 <img src="readme-images/front-success.png" />
 
 #### MailBox of <a href="http://mailtrap.io">MailTrap</a> (Showing successful email sending)
