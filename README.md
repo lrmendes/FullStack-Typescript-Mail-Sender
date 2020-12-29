@@ -36,7 +36,7 @@ The back-end interface uses nodemailer and to send emails with nodeJS.
 ### Successful email sending
 <img src="readme-images/front-success.png" />
 
-#### MailBox of <a href="http://mailtrap.io">MailTrap</a> (Showing successful email sending)
+#### MailBox from <a href="http://mailtrap.io">MailTrap</a> (Showing successful email sending)
 <img src="readme-images/mail-box.png" />
 
 #### Error handling (with Ant Design Alerts)
